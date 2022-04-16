@@ -1,0 +1,9 @@
+requests
+Pillow
+selenium
+Flask==2.1.1
+anticaptchaofficial
+chromedriver-autoinstaller
+beautifulsoup4
+lxml
+gunicorn
