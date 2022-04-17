@@ -22,20 +22,23 @@ def getPapeletas(_dni):
     
     sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
     opts = webdriver.ChromeOptions()
+    opts.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     # GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
     # CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
     # opts = Options()
     # opts.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
-    opts.binary_location = "/app/.apt/usr/bin/google-chrome-stable"
+    # opts.binary_location = "/app/.apt/usr/bin/google-chrome-stable"
     opts.add_argument("--headless")
     opts.add_argument('--no-sandbox')
-    opts.add_argument('--disable-dev-shm-usage')
+    opts.add_argument('--disable-gpu')
     opts.add_argument('user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/59.0.3071.115 Safari/537.36')
-    browser = webdriver.Chrome(chrome_options=opts)
+    DRIVER_PATH = './chromedriver'
+    browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=opts)
+    # browser = webdriver.Chrome(chrome_options=opts)
     # browser = webdriver.Chrome(executable_path=os.environ.get('CHROMEDRIVER_PATH'),options=opts)
     # browser = webdriver.Chrome(ChromeDriverManager().install(), options=opts)
 
-    wait = WebDriverWait(browser, 10)
+    # wait = WebDriverWait(browser, 10)
     url = 'https://scppp.mtc.gob.pe'
     browser.get(url)
     try:
