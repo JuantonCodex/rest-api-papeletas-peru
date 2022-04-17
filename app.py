@@ -4,8 +4,7 @@ from functions import getPapeletas
 
 
 app = Flask(__name__)
-print(os.environ['ANTICAPTCHA_TOKEN'])
-
+# print(os.environ['ANTICAPTCHA_TOKEN'])
 
 @app.route("/papeletas/<string:_dni>", methods=["GET"])
 def papeletas(_dni):
@@ -13,4 +12,4 @@ def papeletas(_dni):
     return papeletas
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run()

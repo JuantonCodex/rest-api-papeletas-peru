@@ -15,13 +15,13 @@ from flask import jsonify
 from classes.AntiCaptcha import Captcha
 
 def getPapeletas(_dni):
-    chromedriver_autoinstaller.install()
+    
     sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
     opts = Options()
     opts.add_argument(
         'user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/59.0.3071.115 Safari/537.36')
 
-    browser = webdriver.Chrome(chrome_options=opts)
+    browser = webdriver.Chrome(chromedriver_autoinstaller.install(), chrome_options=opts)
 
     url = 'https://scppp.mtc.gob.pe'
     browser.get(url)
