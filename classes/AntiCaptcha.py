@@ -3,7 +3,8 @@ from anticaptchaofficial.imagecaptcha import *
 
 
 class Captcha:
-    token = open('./private/token.txt').readline().strip()
+    token = os.Getenv("ANTICAPTCHA_TOKEN")
+    # token = open('./private/token.txt').readline().strip()
 
     def __init__(self, captcha_image_path):
         print("init")
