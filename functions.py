@@ -8,6 +8,9 @@ from PIL import Image
 from time import sleep
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.ui import WebDriverWait
 from flask import jsonify
 
 # chromedriver_autoinstaller.install()
@@ -18,12 +21,19 @@ from classes.AntiCaptcha import Captcha
 def getPapeletas(_dni):
     
     sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-    opts = Options()
-    opts.add_argument(
-        'user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/59.0.3071.115 Safari/537.36')
+    opts = webdriver.ChromeOptions()
+    # GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
+    # CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+    # opts = Options()
+    opts.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
+    opts.add_argument("--headless")
+    opts.add_argument('--no-sandbox')
+    opts.add_argument('--disable-dev-shm-usage')
+    opts.add_argument('user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/59.0.3071.115 Safari/537.36')
+    browser = webdriver.Chrome(executable_path=os.environ.get('CHROMEDRIVER_PATH'),options=opts)
+    # browser = webdriver.Chrome(ChromeDriverManager().install(), options=opts)
 
-    browser = webdriver.Chrome(executable_path=r'./chromedriver.exe', chrome_options=opts)
-
+    wait = WebDriverWait(browser, 10)
     url = 'https://scppp.mtc.gob.pe'
     browser.get(url)
     try:
