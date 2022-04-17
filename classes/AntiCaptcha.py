@@ -4,7 +4,7 @@ from anticaptchaofficial.imagecaptcha import *
 
 class Captcha:
     # token = os.environ("ANTICAPTCHA_TOKEN")
-    token = "3e417ea09c3307b98c1cbded8dae9994"
+    token = os.environ.get("ANTICAPTCHA_TOKEN")
     # token = open('./private/token.txt').readline().strip()
 
     def __init__(self, captcha_image_path):
