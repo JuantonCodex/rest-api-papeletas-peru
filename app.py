@@ -12,4 +12,4 @@ def papeletas(_dni):
     return papeletas
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

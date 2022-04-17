@@ -10,6 +10,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from flask import jsonify
 
+# chromedriver_autoinstaller.install()
 
 # Classes
 from classes.AntiCaptcha import Captcha
@@ -21,7 +22,7 @@ def getPapeletas(_dni):
     opts.add_argument(
         'user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/59.0.3071.115 Safari/537.36')
 
-    browser = webdriver.Chrome(chromedriver_autoinstaller.install(), chrome_options=opts)
+    browser = webdriver.Chrome('./chromedriver.exe',chrome_options=opts)
 
     url = 'https://scppp.mtc.gob.pe'
     browser.get(url)
