@@ -3,7 +3,6 @@ from anticaptchaofficial.imagecaptcha import *
 
 
 class Captcha:
-    print(os.environ['ANTICAPTCHA_TOKEN'])
     token = os.environ("ANTICAPTCHA_TOKEN")
     # token = open('./private/token.txt').readline().strip()
 
