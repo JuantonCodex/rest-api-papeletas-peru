@@ -1,4 +1,5 @@
 requests
+webdriver-manager
 Pillow
 selenium
 Flask==2.1.1
@@ -6,4 +7,5 @@ anticaptchaofficial
 chromedriver-autoinstaller
 beautifulsoup4
 lxml
+webdriver_manager
 gunicorn
